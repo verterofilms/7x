@@ -1,5 +1,7 @@
 "use client";
 
+export const dynamic = 'force-dynamic';
+
 import { useState } from "react";
 
 type Step = "quiz" | "loading" | "devo" | "subscribe";
