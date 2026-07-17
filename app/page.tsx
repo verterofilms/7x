@@ -19,8 +19,10 @@ interface ProfileAnswers {
 interface Devo {
   scripture: string;
   insight: string;
+  analysis?: string;
   reflection: string;
-  application: string;
+  why?: string;
+  question?: string;
   prayer: string;
 }
 
@@ -331,31 +333,47 @@ export default function Home() {
   // Devo display
   if (step === "devo" && devo) {
     return (
-      <div className="min-h-screen bg-stone-50 dark:bg-stone-900 flex items-center justify-center p-4">
-        <div className="w-full max-w-md space-y-8">
+      <div className="min-h-screen bg-stone-50 dark:bg-stone-900 flex items-center justify-center p-4 font-serif">
+        <div className="w-full max-w-2xl space-y-8 max-h-[90vh] overflow-y-auto">
           <div>
-            <p className="text-xs text-stone-500 uppercase tracking-wider mb-2">Scripture</p>
-            <p className="text-lg text-stone-700 dark:text-stone-300 italic">{devo.scripture}</p>
+            <p className="text-xs text-stone-500 uppercase tracking-wider mb-3">Passage</p>
+            <p className="text-lg text-stone-700 dark:text-stone-300 leading-relaxed">{devo.scripture}</p>
           </div>
 
           <div>
-            <p className="text-xs text-stone-500 uppercase tracking-wider mb-2">Insight</p>
+            <p className="text-xs text-stone-500 uppercase tracking-wider mb-3">The Coldest Verse</p>
             <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">{devo.insight}</p>
           </div>
 
+          {devo.analysis && (
+            <div>
+              <p className="text-xs text-stone-500 uppercase tracking-wider mb-3">Who Carries the Weight</p>
+              <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">{devo.analysis}</p>
+            </div>
+          )}
+
           <div>
-            <p className="text-xs text-stone-500 uppercase tracking-wider mb-2">Reflection</p>
+            <p className="text-xs text-stone-500 uppercase tracking-wider mb-3">The Trap</p>
             <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">{devo.reflection}</p>
           </div>
 
-          <div>
-            <p className="text-xs text-stone-500 uppercase tracking-wider mb-2">For Your Day</p>
-            <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">{devo.application}</p>
-          </div>
+          {devo.why && (
+            <div>
+              <p className="text-xs text-stone-500 uppercase tracking-wider mb-3">Why Story</p>
+              <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">{devo.why}</p>
+            </div>
+          )}
+
+          {devo.question && (
+            <div>
+              <p className="text-xs text-stone-500 uppercase tracking-wider mb-3">For Reflection</p>
+              <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed italic">{devo.question}</p>
+            </div>
+          )}
 
           <div>
-            <p className="text-xs text-stone-500 uppercase tracking-wider mb-2">Prayer</p>
-            <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed italic">{devo.prayer}</p>
+            <p className="text-xs text-stone-500 uppercase tracking-wider mb-3">Prayer</p>
+            <p className="text-sm text-stone-700 dark:text-stone-300 leading-relaxed">{devo.prayer}</p>
           </div>
 
           {trialDaysLeft <= 0 && (
